@@ -1,0 +1,40 @@
+
+
+.vmrp{
+    text-decoration: line-through;
+    color: #7e818c;
+    font-weight: 400;
+    margin-left: 5px;
+    font-size: 14px;
+  }
+
+  .vdiscount{
+    color: #ff905a;
+    font-weight: 400;
+    font-size: 18px;
+    margin-left: 5px;
+    font-family: Whitney,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  }
+
+  .error-size{
+    
+        color: red;
+        font-size: 13px;
+   
+  }
+
+  .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 220px!important;
+    margin-top: 25px!important;
+}
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 220px;
+    margin-top: 22px;
+}
+
+
+.owl-carousel {
+ 
+  z-index: 0!important;
+}

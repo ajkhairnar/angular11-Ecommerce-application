@@ -1,0 +1,35 @@
+.totalcart-items{
+    max-height: 300px;
+    overflow-y: scroll;
+    
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #9055A2; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #9055A2; 
+  }
+
+
+  .right-col .cart-product a {
+    text-decoration: none !important;
+    color: #333 !important;
+    padding: 0;
+    margin-right: 16px;
+}

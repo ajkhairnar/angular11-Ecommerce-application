@@ -1,0 +1,139 @@
+@import '../node_modules/ngx-toastr/toastr.css';
+
+/* You can add global styles to this file, and also import other style files */
+.my-pagination li{
+    background: #9055A2;
+    min-width: 40px;
+    padding: 0 15px;
+    height: 40px;
+    margin: 0 5px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #333;
+    font-weight: 400;
+    border-radius: 0 !important;
+  }
+
+  .ngx-pagination li{
+    background: white;
+    min-width: 40px;
+    padding: 0 15px;
+    height: 40px;
+    margin: 0 5px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #333;
+    font-weight: 400;
+    border-radius: 0 !important;
+  }
+
+  .ngx-pagination a:hover {
+    background: none!important;
+}
+
+.ngx-pagination a:focus {
+    outline: none!important;
+}
+.ngx-pagination li{
+    background: white;
+    min-width: 40px;
+    padding: 0px;
+    height: 40px;
+    margin: 0 5px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #333;
+    font-weight: 400;
+    border-radius: 0 !important;
+}
+.my-pagination /deep/ .ngx-pagination .current {
+    background: #9055A2!important;
+    min-width: 40px;
+    padding: 0.1875rem 0.625rem;
+    height: 40px;
+    margin: 0 5px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #333;
+    font-weight: 400;
+    border-radius: 0 !important;
+  }
+
+  .ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: #9055A2!important;
+    color: #fefefe;
+    cursor: default;
+}
+
+.ngx-pagination a, .ngx-pagination button {
+    color: #0a0a0a;
+    display: block;
+    padding: 0px 14px!important;
+    border-radius: 0;
+}
+
+.ngx-pagination .disabled {
+    padding: 0px 14px!important;
+    color: #cacaca;
+    cursor: default;
+}
+
+section.product-details .review span {
+  margin: 0;
+  font-size: 21px;
+  color: #9055A2;
+}
+
+.toast-container .ngx-toastr {
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 6px;
+  padding: 15px 15px 15px 50px;
+  width: 300px;
+  border-radius: 15px 15px 15px 15px;
+  background-position: 15px center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  box-shadow: 0 0 11px #999999;
+  color: #FFFFFF;
+}
+
+
+
+.toast-success{
+  background-color: #7a4889;
+}
+
+.website_loader{
+  background-color:white; 
+  border-radius:50%;
+  position: fixed;
+  top: 50%;
+  left: 48%;display:block;
+  -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.12);
+-moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.12);
+box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.12);
+}
+
+.spinner-border{
+  width: 1.5rem; 
+  height: 1.5rem;
+   margin: 8px; 
+   color: #9055A2;
+   border: 2px solid currentColor;
+   border-right-color: transparent;
+  
+}
+
+h1, .h1 {
+  font-size: 2.5rem;
+}
+
+.padding-small {
+  padding: 45px 0 !important;
+}

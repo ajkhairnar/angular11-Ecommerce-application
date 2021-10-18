@@ -1,0 +1,56 @@
+.circle {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-box-shadow: -4px 0px 16px -6px rgba(0,0,0,0.75);
+-moz-box-shadow: -4px 0px 16px -6px rgba(0,0,0,0.75);
+box-shadow: -4px 0px 16px -6px rgba(0,0,0,0.75);
+  }
+
+  .mrp{
+    text-decoration: line-through;
+    color: #7e818c;
+    font-weight: 400;
+    margin-left: 5px;
+    font-size: 12px;
+  }
+
+  .discount{
+    color: #ff905a;
+    font-weight: 400;
+    font-size: 12px;
+    margin-left: 5px;
+    font-family: Whitney,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  }
+
+  .form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.0em + .75rem + 2px)!important;
+  }
+
+
+  
+  .vmrp{
+    text-decoration: line-through;
+    color: #7e818c;
+    font-weight: 400;
+    margin-left: 5px;
+    font-size: 14px;
+  }
+
+  .vdiscount{
+    color: #ff905a;
+    font-weight: 400;
+    font-size: 18px;
+    margin-left: 5px;
+    font-family: Whitney,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  }
+
+  
+
+
+
+

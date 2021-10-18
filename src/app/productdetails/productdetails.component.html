@@ -1,0 +1,160 @@
+<!-- Hero Section-->
+<section class="hero hero-page gray-bg padding-small">
+    <div class="container">
+      <div class="row d-flex">
+        <div class="col-lg-9 order-2 order-lg-1">
+          <h1>{{vptitle}}</h1>
+        </div>
+        <div class="col-lg-3 text-right order-1 order-lg-2">
+          <ul class="breadcrumb justify-content-lg-end">
+            <li class="breadcrumb-item"><a href="javascript:;" routerLink="/shop">Home</a></li>
+            <li class="breadcrumb-item"><a href="javascript:;" routerLink="/shop">Shop</a></li>
+            <li class="breadcrumb-item active">{{vptitle}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="product-details">
+    <div class="container">
+      <div class="row">
+        <div class="product-images col-lg-6">
+          <!-- <div class="ribbon-info text-uppercase">Fresh</div> -->
+          <div class="ribbon-primary text-uppercase" *ngIf="vpsale">Sale</div>
+          <div data-slider-id="1" class="owl-carousel items-slider owl-drag">
+            <div class="item"><img src="../../assets/product/{{vpimg}}" alt="shirt"></div>
+            <!-- <div class="item"><img src="../../../d19m59y37dris4.cloudfront.net/hub/1-4-3/img/shirt-black.png" alt="shirt"></div>
+            <div class="item"><img src="../../../d19m59y37dris4.cloudfront.net/hub/1-4-3/img/shirt-green.png" alt="shirt"></div>
+            <div class="item"><img src="../../../d19m59y37dris4.cloudfront.net/hub/1-4-3/img/shirt-red.png" alt="shirt"></div> -->
+          </div>
+          <div data-slider-id="1" class="owl-thumbs">
+            <button class="owl-thumb-item"><img src="../../assets/product/{{vpimg}}" alt="shirt"></button>
+            <!-- <button class="owl-thumb-item active"><img src="../../../d19m59y37dris4.cloudfront.net/hub/1-4-3/img/shirt-black-small.png" alt="shirt"></button>
+            <button class="owl-thumb-item"><img src="../../../d19m59y37dris4.cloudfront.net/hub/1-4-3/img/shirt-green-small.png" alt="shirt"></button>
+            <button class="owl-thumb-item"><img src="../../../d19m59y37dris4.cloudfront.net/hub/1-4-3/img/shirt-red-small.png" alt="shirt"></button> -->
+          </div>
+        </div>
+        <div class="details col-lg-6">
+          <div class="d-flex align-items-center justify-content-between flex-column flex-sm-row">
+            <ul class="price list-inline no-margin">
+              <li class="list-inline-item current"><span class="vprice">Rs.{{vpprice}}</span></li>
+              <li class="list-inline-item original"><span class="vmrp">Rs.{{vpmrp}}</span></li>
+              <li class="list-inline-item original"><span class="vmrp"><span class="vdiscount">({{vpdiscount}}% OFF)</span></span></li>
+            </ul>
+            <div class="review d-flex align-items-center">
+              <ngb-rating [max]="5" [(rate)]="vpreview" [readonly]="true" ></ngb-rating>
+              <span class="text-muted" style="font-size: 0.8em; margin-left:10px;">{{vpreview}} reviews</span>
+            </div>
+          </div>
+          <p>{{vpdetail}}</p>
+          <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
+            <!-- <div class="quantity d-flex align-items-center">
+              <div class="dec-btn" (click)="productcounter_descrese()" *ngIf="btnder">-</div>
+              <input type="text" value="{{vpcounter}}" >
+              <div class="inc-btn" (click)="productcounter_increse()" *ngIf="btninc">+</div>
+            </div> -->
+            <div style="margin-top:{{sizeerr}}">
+              <select id="product-size" class="bs-select" (change)="sentsize($event)">
+                <option disabled selected value=''>Select Size</option>
+                <option *ngFor="let size of vpsize" value="{{size}}" >{{size}} Size</option>
+              </select><br>
+              <span class="error-size" *ngIf="error_size">please select size</span>
+            </div>
+            
+            
+          </div>
+          
+          <ul class="CTAs list-inline">
+            <li class="list-inline-item"><a href="javascript:;" class="btn btn-template wide" *ngIf="showaddcartbtn" (click)="addtocart(vpid)"> <i class="icon-cart"></i>Add to Cart</a></li>
+            <li class="list-inline-item"><a href="javascript:;" routerLink="/cart" class="btn btn-template wide" *ngIf="showgocartbtn" >  Go to Cart <i class="fa fa-long-arrow-right"></i> </a> </li>
+            <li class="list-inline-item"><a href="javascript:;" class="btn btn-template-outlined wide" (click)="addtowishlist(vpid)"> <i class="fa fa-heart-o"></i>Add to wishlist</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="product-description no-padding">
+    <div class="container">
+      <ul role="tablist" class="nav nav-tabs flex-column flex-sm-row">
+        <li class="nav-item"><a data-toggle="tab" href="#description" role="tab" class="nav-link active">Description</a></li>
+        <li class="nav-item"><a data-toggle="tab" href="#additional-information" role="tab" class="nav-link">Additional Information</a></li>
+      </ul>
+      <div class="tab-content">
+        <div id="description" role="tabpanel" class="tab-pane active">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. LOLUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. LOLDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. LOLUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. LOLDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div id="additional-information" role="tabpanel" class="tab-pane">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th class="border-0">Material:</th>
+                <td class="border-0">Cotton</td>
+              </tr>
+              <tr>
+                <th>Styles:</th>
+                <td>Casual</td>
+              </tr>
+              <tr>
+                <th>Properties:</th>
+                <td>Short Sleeve</td>
+              </tr>
+              <tr>
+                <th>Brand:</th>
+                <td>Calvin Klein</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+       
+      </div>
+    </div>
+    
+  </section>
+  
+  <!-- Overview Popup    -->
+  <div id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade overview">
+    <div role="document" class="modal-dialog">
+      <div class="modal-content">
+        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="icon-close"></i></span></button>
+        <div class="modal-body"> 
+          <div class="ribbon-primary text-uppercase">Sale</div>
+          <div class="row d-flex align-items-center">
+            <div class="image col-lg-5"><img src="../../../d19m59y37dris4.cloudfront.net/hub/1-4-3/img/shirt.png" alt="..." class="img-fluid d-block"></div>
+            <div class="details col-lg-7">
+              <h2>Lose Oversized Shirt</h2>
+              <ul class="price list-inline">
+                <li class="list-inline-item current">$65.00</li>
+                <li class="list-inline-item original">$90.00</li>
+              </ul>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+              <div class="d-flex align-items-center">
+                <div class="quantity d-flex align-items-center">
+                  <div class="dec-btn">-</div>
+                  <input type="text" value="1" class="quantity-no">
+                  <div class="inc-btn">+</div>
+                </div>
+                <select id="size" class="bs-select">
+                  <option value="small">Small</option>
+                  <option value="meduim">Medium</option>
+                  <option value="large">Large</option>
+                  <option value="x-large">X-Large</option>
+                </select>
+              </div>
+              <ul class="CTAs list-inline">
+                <li class="list-inline-item"><a href="#" class="btn btn-template wide"> <i class="fa fa-shopping-cart"></i>Add to Cart</a></li>
+                <li class="list-inline-item"><a href="#" class="visit-product active btn btn-template-outlined wide"> <i class="icon-heart"></i>Add to wishlist</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="website_loader" *ngIf="loadershow">
+    <div class="spinner-border" role="status" >
+    <span class="sr-only">Loading...</span>
+  </div>
+  </div>

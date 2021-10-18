@@ -1,0 +1,216 @@
+
+  <!-- Hero Section-->
+  <section class="hero hero-page gray-bg padding-small">
+    <div class="container">
+      <div class="row d-flex">
+        <div class="col-lg-9 order-2 order-lg-1">
+          <h1>Shopping cart</h1><p class="lead text-muted">You currently have {{productlist.length}} items in your shopping cart</p>
+        </div>
+        <div class="col-lg-3 text-right order-1 order-lg-2">
+          <ul class="breadcrumb justify-content-lg-end">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Shopping cart</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="div" *ngIf="productlist.length > 0;else notavailable">
+   
+    <!-- Shopping Cart Section-->
+    <section class="shopping-cart" id="Show">
+      
+      <div class="container">
+      
+        <div class="basket">
+
+          <div class="basket-holder">
+
+            <h5 class="itemselectedg">{{selecteditem}}/{{productlist.length}} ITEMS SELECTED</h5>
+
+            <div class="basket-header">
+              
+              <div class="row">
+                <div class="col-1">Select Item</div>
+                <div class="col-4">Product</div>
+                <div class="col-2">Price</div>
+                <div class="col-2">Quantity</div>
+                <div class="col-2">Total</div>
+                <div class="col-1 text-center">Remove</div>
+              </div>
+            </div>
+            <div class="basket-body">
+              <!-- Product-->
+
+              <div *ngIf="productlist.length > 0; else notavailable">
+              
+                <div class="item" *ngFor="let p of productlist; let i = index">
+                
+                  <div class="row d-flex align-items-center">
+                    <div class="col-1">
+                      <input type="checkbox" [checked]="p.buycheck" (click)="select_deselect_item(i,p.buycheck)">
+                    </div>
+                    <div class="col-4">
+                      <div class="d-flex align-items-center"><img src="../../../assets//product/{{p.img}}" alt="..." class="img-fluid">
+                        <div class="title"><a href="detail.html">
+                            <h5>Loose Oversised Shirt</h5><span class="text-muted">Size: {{p.buysize}}</span></a>
+                          
+                            <a href="../../../assets//product/{{p.img}}" download="{{p.img}}">download</a>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-2"><span> Rs.{{p.price}}</span>  </div>
+                    <div class="col-2">
+                      <div class="d-flex align-items-center">
+                        <div class="quantity d-flex align-items-center">
+                          <div class="dec-btn" *ngIf="p.buyquantity != 1" (click)="btnproductinr_der(p.buyquantity,p.total,i,'decrese')">-</div>
+                          <input type="text" value="{{p.buyquantity}}" class="quantity-no">
+                          <div class="inc-btn" *ngIf="p.total > p.buyquantity" (click)="btnproductinr_der(p.buyquantity,p.total,i,'increse')" >+</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-2"><span>Rs.{{p.price * p.buyquantity}}</span></div>
+    
+                    <div class="col-1 text-center" (click)="deleteproduct(i)"><i class="delete fa fa-trash"></i></div>
+                  </div>
+                </div>
+              </div>
+
+              <ng-template #notavailable>
+                not fount
+              </ng-template>
+              
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="CTAs d-flex align-items-center justify-content-center justify-content-md-end flex-column flex-md-row"><a href="javascript:;" routerLink="/shop" class="btn btn-template-outlined wide">Continue Shopping</a>
+          <a href="javascript:;" routerLink="." fragment="orders" class="btn btn-template wide">Order Summery</a></div>
+          
+      </div>
+    </section>
+    <!-- Order Details Section-->
+    <section class="order-details no-padding-top"> 
+      <div class="container">
+        <div class="row">                         
+          <div class="col-lg-6" id="Cshow">
+            <div class="block">
+              <div class="block-header">
+                <h6 class="text-uppercase">Coupon Code</h6>
+              </div>
+              <div class="block-body">
+                <p>If you have a coupon code, please enter it in the box below</p>
+                
+                  <div class="form-group d-flex" style="margin-bottom: 0rem;">
+                    <input type="text" name="coupon" [(ngModel)]="couponcode" style="border-color:{{styleerror}} ;">
+                    
+                    <button type="submit" class="cart-black-button" (click)="applycouponnew()">Apply coupon</button>
+                   
+                  </div>
+               
+                  <span style="color:{{styleerror}}">{{coupon_error}}</span>
+
+                <div class="clistdiv mt-3">
+                  <div class="row font-weight-bold" >
+                    <div class="col-md-1" >
+                      #                    
+                    </div>
+                    <div class="col-md-3" >
+                        Code
+                    </div>
+                    <div class="col-md-3" >
+                       Discount
+                    </div>
+                  </div>
+                  <div class="row mt-2" *ngFor="let c of couponcodelist; let i= index">
+                    <div class="col-md-1" >
+                      {{i+1}}
+                    </div>
+                    <div class="col-md-3" >
+                        {{c.code}}
+                    </div>
+                    <div class="col-md-3" >
+                      Rs.{{c.price}}
+                    </div>
+                  </div>
+                </div>
+                
+
+              </div>
+            </div>
+          
+          </div>
+          <div class="col-lg-6" id="orders">
+            <div class="block">
+              <div class="block-header">
+                <h6 class="text-uppercase">Order Summary</h6>
+              </div>
+
+              <div class="block-body" id="Jayeshdiv" *ngIf="selecteditem > 0;else ordersammeryempty" >
+                <p>Shipping and additional costs are calculated based on values you have entered.</p>
+                <ul class="order-menu list-unstyled">
+                  <li class="d-flex justify-content-between"><span>Price ({{selecteditem}} item) </span><strong>Rs.{{s_price}}</strong></li>
+                  <li class="d-flex justify-content-between"><span>Coupon Discount </span>
+
+                    <strong *ngIf="appliedcouponprice > 0;else applycouponshow" style="color:#00b74a">- Rs.{{ appliedcouponprice}} <br><a href="javascript:;" class="removebtn_coupon" (click)="removecoupon('remove')" >Remove</a></strong> 
+                    <ng-template #applycouponshow>
+                      <strong ><a href="javascript:;" routerLink="." fragment="Cshow">Apply Coupon</a></strong>
+                    </ng-template>
+                  </li>
+                  
+                  <li class="d-flex justify-content-between"><span>Delivery Charges </span><strong>Free</strong></li>
+                  <li class="d-flex justify-content-between"><span>Total Amount</span><strong class="text-primary price-total">Rs.{{total_amount}}</strong></li>
+                </ul>
+              </div>
+
+             
+              <ng-template #ordersammeryempty>
+                <div class="block-body">
+                  <p > <span class="font-weight-bold"> No items selected...</span>  <a href="javascript:;">please select item</a></p>
+                </div>
+              </ng-template>
+             
+
+             
+
+
+            </div>
+          </div>
+          <div class="col-lg-12 text-center CTAs" *ngIf="selecteditem > 0">
+            <a href="javascript:;" routerLink="checkout" class="btn btn-template btn-lg wide">Proceed to checkout<i class="fa fa-long-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <ng-template #notavailable>
+    <section class="">
+      
+      <div class="container">
+          <div class="row">
+            <div class="col text-center">
+                <img src="../../../assets//empty-cart.svg" style="height: 166px;">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-center">
+              <h5 class="mt-2">Your Cart Is Currently Empty</h5>
+              <a href="javascript:;" routerLink="/shop" class="btn btn-template mt-3">Return to Shop</a>
+            </div>
+          </div>
+      </div>
+      
+    </section>
+  </ng-template>
+
+  <div class="website_loader" *ngIf="loadershow">
+    <div class="spinner-border" role="status" >
+    <span class="sr-only">Loading...</span>
+  </div>
+  </div>
+  
+  

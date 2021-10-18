@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Shoppy</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+   <!-- Bootstrap CSS-->
+   <link rel="stylesheet" href="./assets/vendor/bootstrap/css/bootstrap.min.css">
+   <!-- Font Awesome CSS-->
+   <link rel="stylesheet" href="./assets/vendor/font-awesome/css/font-awesome.min.css">
+   <!-- Bootstrap Select-->
+   <link rel="stylesheet" href="./assets/vendor/bootstrap-select/css/bootstrap-select.min.css">
+   <!-- Price Slider Stylesheets -->
+   <link rel="stylesheet" href="./assets/vendor/nouislider/nouislider.css">
+   <!-- Custom font icons-->
+   <link rel="stylesheet" href="./assets/css/custom-fonticons.css">
+   <!-- Google fonts - Poppins-->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700">
+   <!-- owl carousel-->
+   <link rel="stylesheet" href="./assets/vendor/owl.carousel/assets/owl.carousel.css">
+   <link rel="stylesheet" href="./assets/vendor/owl.carousel/assets/owl.theme.default.css">
+   <!-- theme stylesheet-->
+   <link rel="stylesheet" href="./assets/css/style.default.css" id="theme-stylesheet">
+   <!-- Custom stylesheet - for your changes-->
+   <link rel="stylesheet" href="./assets/css/custom.css">
+   <style>
+    
+   </style>
+   <!-- Modernizr-->
+   <script src="./assets/js/modernizr.custom.79639.js"></script>
+
+     <!-- JavaScript files-->
+     <script src="./assets/vendor/jquery/jquery.min.js"></script>
+     <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+     <script src="./assets/vendor/jquery.cookie/jquery.cookie.js"> </script>
+     <script src="./assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+     <script src="./assets/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.min.js"></script>
+     <script src="./assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+     <script src="./assets/vendor/nouislider/nouislider.min.js"></script>
+     <script src="./assets/vendor/jquery-countdown/jquery.countdown.min.js"></script>
+     <script src="./assets/vendor/masonry-layout/masonry.pkgd.min.js"></script>
+     <script src="./assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+     <!-- masonry -->
+    
+</head>
+<body>
+  <app-root></app-root>
+  <script>
+    $(function(){
+        var $grid = $('.masonry-wrapper').masonry({
+            itemSelector: '.item',
+            columnWidth: '.item',
+            percentPosition: true,
+            transitionDuration: 0,
+        });
+    
+        $grid.imagesLoaded().progress( function() {
+            $grid.masonry();
+        });
+    })
+    
+    
+  </script>
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/606478f2067c2605c0be0ff5/1f247gtji';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+  <!-- Main Template File-->
+  <script src="./assets/js/front.js"></script>
+</body>
+</html>

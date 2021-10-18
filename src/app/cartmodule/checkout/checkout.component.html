@@ -1,0 +1,134 @@
+ <!-- Hero Section-->
+ <section class="hero hero-page gray-bg padding-small">
+    <div class="container">
+      <div class="row d-flex">
+        <div class="col-lg-9 order-2 order-lg-1">
+          <h1>Checkout</h1><p class="lead">You currently have {{totalitem}} item in your basket</p>
+        </div>
+        <div class="col-lg-3 text-right order-1 order-lg-2">
+          <ul class="breadcrumb justify-content-lg-end">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Checkout</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Checkout Forms-->
+  <section class="checkout">
+    <div class="container">
+      <div class="row">
+        
+        <div class="col-lg-8">
+          
+         
+            <div id="address" class="active tab-block">
+              <form [formGroup]="userdetails" (ngSubmit)="userdetails_fill()">
+                <!-- Invoice Address-->
+                <div class="block-header mb-5">
+                  <h6>Invoice address                    </h6>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="firstname" class="form-label">First Name</label>
+                    <input id="firstname" type="text"  formControlName="firstname" placeholder="Enter you first name" class="form-control">
+                    
+                    <div class="error" *ngIf="firstname && firstname.invalid && firstname.touched">
+                        <span class="error_checkout" *ngIf="firstname.errors && firstname.errors.required">Please enter first name</span>
+                        <span class="error_checkout" *ngIf="firstname.errors && firstname.errors.pattern">Please enter valid first name</span>
+                    </div>
+                  
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="lastname" class="form-label">Last Name</label>
+                    <input id="lastname" type="text" formControlName="lastname" name="last-name" placeholder="Enter your last name" class="form-control">
+                    <div class="error" *ngIf="lastname && lastname.invalid && lastname.touched">
+                        <span class="error_checkout" *ngIf="lastname.errors && lastname.errors.required">Please enter last name</span>
+                        <span class="error_checkout" *ngIf="lastname.errors && lastname.errors.pattern">Please enter valid last name</span>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input id="email" type="email" formControlName="email" name="email" placeholder="enter your email address" class="form-control">
+                    <div *ngIf="email && email.invalid && email.touched">
+                        <span class="error_checkout" *ngIf="email.errors && email.errors.required">Email id is required</span>
+                        <span class="error_checkout" *ngIf="email.errors && email.errors.email">Enter valid email id</span>
+                      </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="street" class="form-label">Street</label>
+                    <input id="street" type="text" formControlName="street" name="address" placeholder="Your street name" class="form-control">
+                    <span class="error_checkout" *ngIf="street && street.invalid && street.touched ">Street is required</span>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="city" class="form-label">City</label>
+                    <input id="city" type="text" formControlName="city" name="city" placeholder="Your city" class="form-control">
+                    <div *ngIf="city && city.invalid && city.touched">
+                        <span class="error_checkout" *ngIf="city.errors && city.errors.required">Enter city</span>
+                        <span class="error_checkout" *ngIf="city.errors && city.errors.pattern">Enter valid city</span>
+                      </div>
+                  </div>
+                 
+                  <div class="form-group col-md-3">
+                    <label for="state" class="form-label">State</label>
+                    <input id="state" type="text" formControlName="state" name="state" placeholder="Your state" class="form-control">
+                    <div *ngIf="state && state.invalid && state.touched">
+                      <span class="error_checkout" *ngIf="state.errors && state.errors.required">Enter state</span>
+                      <span class="error_checkout" *ngIf="state.errors && state.errors.pattern">Enter valid state</span>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input id="country" type="text" formControlName="country" name="country" placeholder="Your country" class="form-control">
+                    <div *ngIf="country && country.invalid && country.touched">
+                      <span class="error_checkout" *ngIf="country.errors && country.errors.required">Enter country</span>
+                      <span class="error_checkout" *ngIf="country.errors && country.errors.pattern">Enter valid country</span>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="phone-number" class="form-label">Phone Number</label>
+                    <input id="phone-number" type="text" formControlName="mobile" name="phone-number" placeholder="Your phone number" class="form-control">
+
+                    <div class="div" *ngIf="mobile && mobile.invalid && mobile.touched">
+                      <span class="error_checkout" *ngIf="mobile.errors && mobile.errors.required">Mobile number is required.</span>
+                      <span class="error_checkout" *ngIf="mobile.errors && mobile.errors.pattern">Enter 10 digit Number</span>
+                    </div>
+                  </div>
+                  
+                 
+                </div>
+                <!-- /Invoice Address-->
+                
+                <div class="CTAs d-flex justify-content-between flex-column flex-lg-row">
+                    <a href="javascript:;" routerLink="/cart" class="btn btn-template-outlined wide prev"> <i class="fa fa-angle-left"></i>Back to basket</a>
+                    <!-- <a href="javascript:;" class="btn btn-template wide next" disabled="!userdetails.valid" >Choose delivery method<i class="fa fa-angle-right"></i></a> -->
+                    
+                    <button  type="submit" class="btn btn-template wide next"  [disabled]="!userdetails.valid" >Payment</button>
+
+                 
+                  </div>
+              </form>
+            </div>
+         
+        </div>
+        <div class="col-lg-4">
+          <div class="block-body order-summary">
+            <h6 class="text-uppercase">Order Summary</h6>
+            <p>Free Shipping</p>
+            <ul class="order-menu list-unstyled">
+              <li class="d-flex justify-content-between"><span>Price ({{totalitem}} item)   </span><strong>Rs.{{orderprice}}</strong></li>
+              <li class="d-flex justify-content-between"><span>Coupon Discount  </span>
+                <strong *ngIf="couponcodeprice > 0;else notappy" style="color: #00b74a;">-Rs.{{couponcodeprice}}</strong>
+                <ng-template #notappy>
+                  <strong>Not Apply</strong>
+                </ng-template>
+              </li>
+              <li class="d-flex justify-content-between"><span>Delivery Charges</span><strong>Free</strong></li>
+              <li class="d-flex justify-content-between"><span>Total Amount </span><strong class="text-primary price-total">Rs.{{totalamt}}</strong></li>
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

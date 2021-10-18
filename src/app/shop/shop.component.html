@@ -1,0 +1,171 @@
+
+  <!-- Hero Section-->
+  <section class="hero hero-page gray-bg padding-small">
+    <div class="container">
+      <div class="row d-flex">
+        <div class="col-lg-9 order-2 order-lg-1">
+          <h1>Shop</h1>
+        </div>
+        <div class="col-lg-3 text-right order-1 order-lg-2">
+          <ul class="breadcrumb justify-content-lg-end">
+            <li class="breadcrumb-item"><a href="javascript:;" routerLink="/shop">Home</a></li>
+            <li class="breadcrumb-item active">Shop</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <main>
+    <div class="container">
+      <div class="row">
+        <!-- Sidebar-->
+        <div class="sidebar col-xl-3 col-lg-4 sidebar">
+          <div class="block">
+            <h6 class="text-uppercase">Product Categories</h6>
+            <ul class="list-unstyled">
+              <li>
+                <div class="form-group mb-1" *ngFor="let c of category; let i = index">
+                 
+                    <input id="category{{i}}" type="checkbox" name="clothes-brand" class="checkbox-template" [checked]= "categoryfound(c)" (click)="category_filter('category',c)">
+                    <label for="category{{i}}">{{c|titlecase}}</label>
+                  
+                   
+                    
+                </div>
+              </li>
+             
+            </ul>
+          </div>
+          <div class="block">
+            <h6 class="text-uppercase">Brands </h6>
+            
+              <div class="form-group mb-1" *ngFor="let b of brand; let i = index">
+                <input id="brand{{i}}" type="checkbox" name="clothes-brand" class="checkbox-template" [checked]= "categoryfound(b)" (click)="category_filter('brand',b)">
+                <label for="brand{{i}}">{{b|titlecase}}</label>
+              </div>
+              
+            
+          </div>
+          <div class="block"> 
+            <h6 class="text-uppercase">Color </h6>
+           
+              <div class="form-group mb-1" *ngFor="let c of color;let i = index">
+                <input id="size{{i}}" type="checkbox" name="clothes-brand" class="checkbox-template" [checked]= "categoryfound(c)" (click)="category_filter('color',c)">
+                <label for="size{{i}}"> <span class="circle" style="background-color:{{c}}"></span> {{c|titlecase}}</label>
+              </div>
+              
+          </div>
+        </div>
+        <!-- /Sidebar end-->
+        <!-- Grid -->
+        
+        <div class="products-grid col-xl-9 col-lg-8 sidebar-left">
+          <header class="d-flex justify-content-between align-items-start"><span class="visible-items">Showing <strong>{{config.itemsPerPage}}-{{config.currentPage}} </strong>of <strong>{{count()}} </strong>results</span>
+            <select id="sorting"class="form-control form-control-sm col-md-3" (change)="category_filter('price',$event)">
+              <option value="lowest-price" value='' >Select Range</option>
+              <option *ngFor="let p of price" [ngValue]="p" [selected]= "categoryfound(p)">{{p}}</option>
+            </select>
+            <!-- <span>notactive</span>
+            <select id="sorting" class="bs-select">
+                <option value="newest">Item Condition</option>
+                <option value="oldest">Oldest</option>
+               
+              </select> -->
+          </header>
+          <div class="div" *ngIf="products.length > 0;else notfo">
+
+        
+            <div class="row" >
+              <!-- item-->
+            
+                <div class="item col-xl-4 col-md-6" *ngFor = "let p of products | paginate: config">
+                  <div class="product is-gray" >
+                    <div class="image d-flex align-items-center justify-content-center" >
+                      <div class="ribbon ribbon-primary text-uppercase" *ngIf="p.sale==1">Sale</div>
+                      <img src="../../assets/product/{{p.img}}" alt="product" class="img-fluid">
+                      <div class="hover-overlay d-flex align-items-center justify-content-center">
+                        <div class="CTA d-flex align-items-center justify-content-center">
+                          <!-- <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i></a> -->
+                          <a href="javascript:;" routerLink="/shop/{{p.title|removesspace}}/{{p.id}}" class="visit-product active"><i class="icon-search"></i>View</a><a href="#" data-toggle="modal" data-target="#exampleModal" class="quick-view" (click)="viewproduct(p)"><i class="fa fa-arrows-alt"></i></a></div>
+                      </div>
+                    </div>
+                    <div class="title">
+                      <small class="text-muted">{{p.shortline}}</small>
+                      <a href="javascript:;"><h3 class="h6 text-uppercase no-margin-bottom">{{p.title}}</h3></a>
+                      <span class="price text-muted">Rs.{{p.price}}</span> 
+                      <span class="mrp">Rs.{{p.mrp}}</span>
+                      <span class="discount">({{p.discount}}% OFF)</span>
+                    </div>
+                  </div>
+                </div>
+            
+            </div>
+            
+            <nav aria-label="page navigation example" class="d-flex justify-content-center">
+              <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
+            </nav>
+
+        </div>
+
+          <ng-template #notfo>
+            <div class="row">
+              <div class="item col text-center">
+                <h5>Product Not Found..</h5>
+              </div>
+            </div>
+          </ng-template>
+          
+        </div>
+        <!-- / Grid End-->
+      </div>
+    </div>
+  </main>
+
+
+  <!-- Overview Popup    -->
+  <div id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade overview">
+    <div role="document" class="modal-dialog">
+      <div class="modal-content">
+        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="icon-close"></i></span></button>
+        <div class="modal-body"> 
+          <!-- <div class="ribbon-primary text-uppercase">Sale</div> -->
+          <div class="row d-flex align-items-center">
+            <div class="image col-lg-5"><img src="../../assets/product/{{vpimg}}" alt="..." class="img-fluid d-block"></div>
+            <div class="details col-lg-7">
+              <h2>{{vptitle}}</h2>
+              <ul class="price list-inline">
+                <li class="list-inline-item current">Rs.{{vpprice}}</li>
+                <li class="list-inline-item original"><span class="vmrp">Rs.{{vpmrp}}</span></li>
+                <li class="list-inline-item original"><span class="vdiscount">({{vpdiscount}}% OFF)</span></li>
+                
+              </ul>
+              <p>{{vpdetail}}</p>
+              <div class="d-flex align-items-center">
+                <!-- <div class="quantity d-flex align-items-center">
+                  <div class="dec-btn" (click)="productcounter_descrese()" *ngIf="btnder">-</div>
+                  <input type="text" value="{{vpcounter}}" >
+                  <div class="inc-btn" (click)="productcounter_increse()" *ngIf="btninc">+</div>
+                </div> -->
+                <select id="size" class="form-control form-control-md col-md-4" >
+                  <option disabled selected value=''>Available Size</option>
+                  <option *ngFor="let size of vpsize" value="{{size}}">{{size}}</option>
+      
+                </select>
+              </div>
+              <!-- <ul class="CTAs list-inline">
+                <li class="list-inline-item"><a href="#" class="btn btn-template wide"> <i class="fa fa-shopping-cart"></i>Add to Cart</a></li>
+                <li class="list-inline-item"><a href="#" class="visit-product active btn btn-template-outlined wide"> <i class="icon-heart"></i>Add to wishlist</a></li>
+              </ul> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="website_loader" *ngIf="loadershow">
+    <div class="spinner-border" role="status" >
+    <span class="sr-only">Loading...</span>
+  </div>
+  </div>

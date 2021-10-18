@@ -1,0 +1,9 @@
+.error_checkout{
+    color:red;
+    font-size: 7px;
+}
+
+section.checkout .nav-item {
+    width: 50% !important;
+    height: 100%;
+}
